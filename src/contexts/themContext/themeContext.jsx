@@ -31,5 +31,11 @@ export function ThemeContextProvider(props) {
 
 // Setup a custom hook for consuming the context
 export function useThemeContext() {
-    return useContext(themeContext)
+    const context = useContext(themeContext)
+
+    if (!context) {
+        throw "useThemeContext needs to be a child of a ThemeContextProvider"
+    }
+
+    return context
 }
