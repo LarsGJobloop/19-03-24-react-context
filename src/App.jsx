@@ -1,34 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { ThemeContextProvider, useThemeContext } from './contexts/themContext/themeContext'
 
 function App() {
-  const [count, setCount] = useState(0)
+  return (
+    <ThemeContextProvider>
+      <HeroSection />
+      <div>
+        <List entries={[
+          { id: 0, content: "Lars" },
+          { id: 1, content: "Tord" },
+          { id: 2, content: "Tron-Morten" },
+        ]} />
+      </div>
+    </ThemeContextProvider>
+  )
+}
+
+function HeroSection() {
+  return (
+    <div>
+      <Controls />
+    </div>
+  )
+}
+
+function Controls() {
+  const { switchTheme } = useThemeContext()
+  return (
+    <button onClick={switchTheme}>Theme Switcher</button>
+  )
+}
+
+function List(props) {
+  const { theme, switchTheme } = useThemeContext()
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <button onClick={switchTheme}>Another switch theme button</button>
+      <ul>
+        {props.entries.map(item => {
+          return (
+            <li
+              key={item.id}
+              style={{ background: theme === "bright" ? "teal" : "black" }}
+            >
+              {item.content}
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 
