@@ -1,5 +1,6 @@
 import './App.css'
 import { ThemeContextProvider, useThemeContext } from './contexts/themContext/themeContext'
+import Accordion from './components/Accordion/Accordion'
 
 function App() {
   return (
@@ -12,6 +13,29 @@ function App() {
           { id: 2, content: "Tron-Morten" },
         ]} />
       </div>
+
+      <Accordion.Root>
+
+        <Accordion.Item>
+          <Accordion.Title>
+            <h1>Hello</h1>
+          </Accordion.Title>
+          <Accordion.Description>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum laboriosam quibusdam non praesentium nam rerum voluptatibus adipisci totam, voluptatum maiores quo possimus molestias aliquid nulla quaerat ipsa nihil expedita tempore!</p>
+          </Accordion.Description>
+        </Accordion.Item>
+
+        <Accordion.Item>
+          <Accordion.Title>
+            <h1>Hello</h1>
+          </Accordion.Title>
+          <Accordion.Description>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum laboriosam quibusdam non praesentium nam rerum voluptatibus adipisci totam, voluptatum maiores quo possimus molestias aliquid nulla quaerat ipsa nihil expedita tempore!</p>
+          </Accordion.Description>
+        </Accordion.Item>
+
+      </Accordion.Root>
+
     </ThemeContextProvider>
   )
 }

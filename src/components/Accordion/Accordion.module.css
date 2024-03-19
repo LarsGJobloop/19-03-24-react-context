@@ -1,0 +1,8 @@
+.description {
+    display: none;
+    padding: 1rem;
+}
+
+.show {
+    display: block;
+}
